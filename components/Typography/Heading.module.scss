@@ -1,0 +1,103 @@
+@use 'sass:list';
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  font-family: var(--font-title);
+}
+
+// Weight
+
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+// Sizes
+
+.xl {
+  font-size: 48px;
+  line-height: 54px;
+}
+
+.lg {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.md {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.sm {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.xs {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+// Colors
+
+.primary {
+  color: var(--color-primary-100);
+}
+
+.secondary {
+  color: var(--color-neutral-500);
+}
+
+.white {
+  color: var(--color-neutral-000);
+}
+
+// Modifiers
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+// Responsive size utility classes
+
+$responsive-sizes: (
+  'xl': (48px, 54px),
+  'lg': (40px, 48px),
+  'md': (32px, 40px),
+  'sm': (24px, 32px),
+  'xs': (20px, 28px),
+);
+
+@each $name, $values in $responsive-sizes {
+  .r-#{$name} {
+    font-size: list.nth($values, 1);
+    line-height: list.nth($values, 2);
+  }
+}
+
+@each $breakpoint in (xs, sm, md, lg, xl) {
+  @include bp.at($breakpoint) {
+    @each $name, $values in $responsive-sizes {
+      .at-#{$breakpoint}-#{$name} {
+        font-size: list.nth($values, 1);
+        line-height: list.nth($values, 2);
+      }
+    }
+  }
+}

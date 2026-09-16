@@ -1,0 +1,140 @@
+@use 'sass:list';
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  font-family: var(--font-body);
+}
+
+// Weight
+
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+// Default responsive sizes
+
+.xxl {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.xl {
+  font-size: 24px;
+  line-height: 32px;
+
+  @include bp.at(md) {
+    font-size: 32px;
+    line-height: 42px;
+  }
+}
+
+.lg {
+  font-size: 18px;
+  line-height: 26px;
+
+  @include bp.at(md) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.md {
+  font-size: 16px;
+  line-height: 24px;
+
+  @include bp.at(md) {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.sm {
+  font-size: 14px;
+  line-height: 20px;
+
+  @include bp.at(md) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.xs {
+  font-size: 12px;
+  line-height: 16px;
+
+  @include bp.at(md) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.xxs {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+// Colors
+
+.primary {
+  color: var(--color-primary-100);
+}
+
+.secondary {
+  color: var(--color-neutral-500);
+}
+
+.white {
+  color: var(--color-neutral-000);
+}
+
+// Modifiers
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+// Responsive size utility classes
+
+$responsive-sizes: (
+  'xxl': (40px, 48px),
+  'xl': (32px, 42px),
+  'lg': (24px, 32px),
+  'md': (18px, 26px),
+  'sm': (16px, 24px),
+  'xs': (14px, 20px),
+  'xxs': (12px, 16px),
+);
+
+@each $name, $values in $responsive-sizes {
+  .r-#{$name} {
+    font-size: list.nth($values, 1);
+    line-height: list.nth($values, 2);
+  }
+}
+
+@each $breakpoint in (xs, sm, md, lg, xl) {
+  @include bp.at($breakpoint) {
+    @each $name, $values in $responsive-sizes {
+      .at-#{$breakpoint}-#{$name} {
+        font-size: list.nth($values, 1);
+        line-height: list.nth($values, 2);
+      }
+    }
+  }
+}

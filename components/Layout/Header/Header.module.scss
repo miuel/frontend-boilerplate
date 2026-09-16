@@ -1,0 +1,64 @@
+@use '@/styles/breakpoints' as bp;
+
+.root {
+  width: 100%;
+  border-bottom: 1px solid var(--color-neutral-200);
+  background-color: var(--color-neutral-000);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-4);
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--gap-4);
+
+  @include bp.at(md) {
+    padding: var(--gap-4) var(--gap-8);
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+  color: inherit;
+  font-family: var(--font-title);
+  text-decoration: none;
+}
+
+.navigation {
+  display: none;
+
+  @include bp.at(md) {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-6);
+  }
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  @include bp.at(md) {
+    display: none;
+  }
+}

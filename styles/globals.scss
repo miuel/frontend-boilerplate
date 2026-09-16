@@ -1,0 +1,93 @@
+@use './spacing' as spacing;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+a {
+  color: inherit;
+}
+
+a[x-apple-data-detectors],
+a[x-apple-data-detectors] *,
+a[href^='tel:'],
+a[href^='mailto:'],
+a[href^='sms:'] {
+  color: inherit !important;
+  text-decoration: none !important;
+  -webkit-text-fill-color: inherit !important;
+  cursor: pointer;
+}
+
+:root {
+  // Spacing
+  --gap-half: 2px;
+
+  @include spacing.generate-gap-vars(
+    4,
+    (1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 20)
+  );
+
+  // Border radius
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  // Typography
+  --font-title: sans-serif;
+  --font-body: sans-serif;
+
+  // Neutral colors
+  --color-neutral-000: #fff;
+  --color-neutral-100: #f7f7f7;
+  --color-neutral-200: #e8e9ea;
+  --color-neutral-300: #c7c7c7;
+  --color-neutral-400: #a4a6aa;
+  --color-neutral-500: #767676;
+  --color-neutral-600: #464648;
+  --color-neutral-700: #151617;
+
+  // Feedback colors
+  --color-error-100: #db5757;
+  --color-error-200: #d32f2f;
+  --color-error-300: #a82424;
+
+  --color-success-100: #249f58;
+
+  // Project theme
+  // Define these values depending on the project's brand.
+  --color-primary-50: initial;
+  --color-primary-100: initial;
+  --color-primary-200: initial;
+  --color-primary-300: initial;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.lock {
+    overflow: hidden;
+  }
+}

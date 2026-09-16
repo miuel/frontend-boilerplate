@@ -19,7 +19,7 @@ A typical component can follow:
 Button/
 ├── Button.tsx
 ├── Button.module.scss
-└── Button.types.ts
+
 ```
 
 Additional files such as tests or Storybook stories can be added when needed.

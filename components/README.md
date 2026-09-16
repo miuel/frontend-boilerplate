@@ -19,7 +19,6 @@ A typical component can follow:
 Button/
 ├── Button.tsx
 ├── Button.module.scss
-
 ```
 
 Additional files such as tests or Storybook stories can be added when needed.
@@ -35,7 +34,6 @@ Link/
 Image/
 Icon/
 Input/
-Modal/
 RichText/
 ```
 

@@ -1,0 +1,27 @@
+@use '@/styles/breakpoints' as bp;
+
+.header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--gap-4);
+
+  background-color: var(--color-neutral-000);
+
+  @include bp.at(md) {
+    padding: var(--gap-6) var(--gap-8);
+  }
+}
+
+.content {
+  padding: 0 var(--gap-4) var(--gap-4);
+
+  @include bp.at(md) {
+    padding: 0 var(--gap-8) var(--gap-8);
+  }
+}

@@ -1,0 +1,5 @@
+@mixin generate-gap-vars($base, $steps) {
+  @each $step in $steps {
+    --gap-#{$step}: #{($base * $step)}px;
+  }
+}

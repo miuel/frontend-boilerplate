@@ -1,6 +1,7 @@
 import { sanityClient } from '@/infrastructure/cms/sanity/client'
 
 import { pageDto } from '../dto/page-dto'
+import { PageSchema } from '../schema/page-schema'
 
 const PAGE_BY_SLUG_QUERY = `
   *[_type == "page" && slug.current == $slug][0] {
@@ -20,5 +21,5 @@ export async function loadPageBySlug(slug: string) {
     return undefined
   }
 
-  return pageDto(data)
+  return PageSchema.parse(pageDto(data))
 }

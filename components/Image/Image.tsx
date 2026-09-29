@@ -1,4 +1,5 @@
 import NextImage from 'next/image'
+import styles from './Image.module.scss'
 
 type ImageProps = {
   src: string
@@ -19,6 +20,7 @@ export const Image = ({
 }: ImageProps) => {
   return (
     <NextImage
+      className={styles.image}
       src={src}
       alt={alt}
       width={width}
